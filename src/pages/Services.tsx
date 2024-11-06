@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react'; // Removed unused import
 import { motion } from 'framer-motion';
 import { Search, BarChart2, Users2, Megaphone, Target, Lightbulb } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -98,7 +98,15 @@ const Services = () => {
   );
 };
 
-const ServiceCard = ({ icon: Icon, title, description, link, index }) => (
+interface ServiceCardProps {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  link: string;
+  index: number;
+}
+
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, description, link, index }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
